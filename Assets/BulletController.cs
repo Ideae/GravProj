@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour {
 		unit *= speed;
 		velocity = unit;
 		*/
-		Physics.IgnoreCollision(Player1.collider,collider);
+		Physics.IgnoreCollision(Player1.GetComponent<Collider>(),GetComponent<Collider>());
 		Vector3 screenCoords = Camera.main.WorldToScreenPoint(transform.position);
 		float angle = Mathf.Atan2 (Input.mousePosition.y - screenCoords.y,Input.mousePosition.x - screenCoords.x);
 		//Debug.Log (angle);

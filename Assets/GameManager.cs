@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 		{
 			for(int j = i + 1; j < platforms.Length;j++)
 			{
-				Physics.IgnoreCollision(platforms[i].collider,platforms[j].collider);
+				Physics.IgnoreCollision(platforms[i].GetComponent<Collider>(),platforms[j].GetComponent<Collider>());
 				
 			}
 		}
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 			timer = 0;
 			assignNewDestinations();
 		}
-		Debug.Log(timer);
+		//Debug.Log(timer);
 		
 	}
 	void assignNewDestinations()
@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour {
 			result += i + ":" + array[i] + " , ";
 		}
 		
-		Debug.Log (result);
 		return array;
 	}
 	

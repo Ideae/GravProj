@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour {
 		if (angle >= (-Mathf.PI/4) && angle <= (Mathf.PI/4))
 		{
 			orient = "right";
-			rigidbody.AddForce(new Vector3(-relGravForce,0,0));
+			GetComponent<Rigidbody>().AddForce(new Vector3(-relGravForce,0,0));
 			
 			//camera.transform.rotation = Quaternion.Euler(0,0,270);
 			
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 		else if (angle >= (Mathf.PI/4) && angle <= (3*Mathf.PI/4))
 		{
 			orient = "up";
-			rigidbody.AddForce(new Vector3(0,-relGravForce,0));
+			GetComponent<Rigidbody>().AddForce(new Vector3(0,-relGravForce,0));
 			
 			currentCamRotation = approachAngle(currentCamRotation, relPlatRotZ,speed);
 			camera1.transform.rotation = Quaternion.Euler(0,0,currentCamRotation);
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour {
 		else if (angle >= (3*Mathf.PI/4) || angle <= (-3*Mathf.PI/4))
 		{
 			orient = "left";
-			rigidbody.AddForce(new Vector3(relGravForce,0,0));
+			GetComponent<Rigidbody>().AddForce(new Vector3(relGravForce,0,0));
 			//camera.transform.rotation = Quaternion.Euler(0,0,90);
 			currentCamRotation = approachAngle(currentCamRotation, relPlatRotZ + 90,speed);
 			camera1.transform.rotation = Quaternion.Euler(0,0,currentCamRotation);
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 		else
 		{
 			orient = "down";
-			rigidbody.AddForce(new Vector3(0,relGravForce,0));
+			GetComponent<Rigidbody>().AddForce(new Vector3(0,relGravForce,0));
 			//camera.transform.rotation = Quaternion.Euler(0,0,180);
 			currentCamRotation = approachAngle(currentCamRotation, relPlatRotZ + 180,speed);
 			camera1.transform.rotation = Quaternion.Euler(0,0,currentCamRotation);
@@ -131,25 +131,25 @@ public class PlayerController : MonoBehaviour {
 		{
 			relativeVect = activePlatform.transform.right;
 			if (Input.GetKeyDown("space"))
-				rigidbody.AddForce(new Vector3(0,jumpForce,0));
+				GetComponent<Rigidbody>().AddForce(new Vector3(0,jumpForce,0));
 		}
 		else if (orient.Equals("down"))
 		{
 			relativeVect = activePlatform.transform.right * -1;
 			if (Input.GetKeyDown("space"))
-				rigidbody.AddForce(new Vector3(0,-jumpForce,0));
+				GetComponent<Rigidbody>().AddForce(new Vector3(0,-jumpForce,0));
 		}
 		else if (orient.Equals("right"))
 		{
 			relativeVect = activePlatform.transform.up * -1;
 			if (Input.GetKeyDown("space"))
-				rigidbody.AddForce(new Vector3(jumpForce,0,0));
+				GetComponent<Rigidbody>().AddForce(new Vector3(jumpForce,0,0));
 		}
 		else if (orient.Equals("left"))
 		{
 			relativeVect = activePlatform.transform.up;
 			if (Input.GetKeyDown("space"))
-				rigidbody.AddForce(new Vector3(-jumpForce,0,0));
+				GetComponent<Rigidbody>().AddForce(new Vector3(-jumpForce,0,0));
 		}
 		transform.position = transform.position + (relativeVect*Input.GetAxis("Horizontal")*0.1f);
 		

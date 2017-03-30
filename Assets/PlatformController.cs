@@ -28,6 +28,8 @@ public class PlatformController : MonoBehaviour {
 		
 		approachPosition(this.gameObject,destination,0.05f);
 	}
+
+  
 	
 	void approachPosition(GameObject obj, Vector3 pos, float speed)
 	{
